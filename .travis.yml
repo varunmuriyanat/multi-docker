@@ -23,3 +23,15 @@ after_success:
   - docker push varunmuriyanat/multi-server
   - docker push varunmuriyanat/multi-worker
 
+deploy:
+    provider: elasticbeanstalk
+    region: 'us-west-2'
+    app: 'dockermulti2'
+    env: 'Dockermulti2-env'
+    bucket_name: 'elasticbeanstalk-us-west-2-536270350233'
+    bucket_path: 'docker-multi'
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
